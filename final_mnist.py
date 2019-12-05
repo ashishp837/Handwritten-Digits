@@ -25,7 +25,7 @@ fig = plt.figure()
 for i in range(10):
   plt.subplot(2,5,i+1)
   plt.tight_layout()
-  plt.imshow(X_train[a[i]], cmap='gray', interpolation='none')
+  plt.imshow(X_train1[a[i]], cmap='gray', interpolation='none')
   plt.title("Actual Label: {}".format(y_train[a[i]]))
   plt.xticks([])
   plt.yticks([])
