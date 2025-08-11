@@ -158,30 +158,26 @@ plt.legend(['train', 'test'], loc='upper left')
 plt.show()
 
 
-
-
-fun(1,1)
-
 from mpl_toolkits import mplot3d
-%matplotlib inline
 import numpy as np
 import matplotlib.pyplot as plt
 import math
 
-def fun(x,y):
-    a=cnf_matrix[math.floor(x),math.floor(y)]
-    return a;
+
+def fun(x, y):
+    """Lookup the value of the confusion matrix at (x, y)."""
+    return cnf_matrix[math.floor(x), math.floor(y)]
+
 
 def f(x, y):
     return np.sin(np.sqrt(x ** 2 + y ** 2))
+
 
 x = np.linspace(0, 9, 50)
 y = np.linspace(0, 9, 50)
 
 X, Y = np.meshgrid(x, y)
-for i in range(50):
-    Z[i]=fun(x[i],y[i])
-Z = f(X, Y)
+Z = np.vectorize(fun)(X, Y)
 fig = plt.figure()
 ax = plt.axes(projection='3d')
 ax.contour3D(X, Y, Z, 50, cmap='binary')
