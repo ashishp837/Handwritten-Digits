@@ -47,14 +47,14 @@ print(model.summary())
 print('----------------------------------------------------------------------')
 
 SEED=42
-from sklearn import (metrics, cross_validation)
+from sklearn import metrics
 mean_auc = 0.0
 n = 10  # repeat the CV procedure 10 times to get more precise results
 for i in range(n):
     # for each iteration, randomly hold out 20% of the data as CV set
-    X_train, X_cv, y_train, y_cv = cross_validation.train_test_split(
-    X_t, y_t, test_size=0.2, random_state=i*SEED)
-    y_plt=y_cv
+    X_train, X_cv, y_train, y_cv = train_test_split(
+        X_t, y_t, test_size=0.2, random_state=i * SEED)
+    y_plt = y_cv
     
     # normalize inputs from 0-255 to 0-1
     X_train = X_train / 255
@@ -219,10 +219,9 @@ for i in range(10):
  
 vals_error = [0]*10
 for i in range(10):
-    vals_error[i]=100-vals_accuracy[i]
+    vals_error[i]=100 - vals_accuracy[i]
 
 
-%matplotlib inline
 plt.style.use('ggplot')
 
 x_pos = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
